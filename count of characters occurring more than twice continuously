@@ -1,37 +1,22 @@
 import java.util.Scanner;
-
 public class ContinuousCharacterCount {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
-        // Input string s
         String s = scanner.nextLine();
-
-        int count = 0; // To count characters occurring more than twice continuously
+        int count = 0; 
         int n = s.length();
-
-        // Traverse the string to check for consecutive characters
         for (int i = 0; i < n;) {
             char currentChar = s.charAt(i);
             int sequenceLength = 1;
-
-            // Count how long the current character sequence is
             while (i + sequenceLength < n && s.charAt(i + sequenceLength) == currentChar) {
                 sequenceLength++;
             }
-
-            // If the sequence length is greater than 2, increment the count
             if (sequenceLength > 2) {
                 count++;
             }
-
-            // Move to the next character sequence
             i += sequenceLength;
         }
-
-        // Output the count of characters occurring more than twice continuously
         System.out.println(count);
-
         scanner.close();
     }
 }
