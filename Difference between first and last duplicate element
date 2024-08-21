@@ -1,27 +1,18 @@
 import java.util.HashMap;
 import java.util.Scanner;
-
 public class FirstLastDuplicateDifference {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
-        // Input length of the array
         int N = scanner.nextInt();
         int[] A = new int[N];
-
-        // Input array elements
         for (int i = 0; i < N; i++) {
             A[i] = scanner.nextInt();
         }
-
-        // Store the first and last occurrence index of duplicate elements
         HashMap<Integer, Integer> firstOccurrence = new HashMap<>();
         int firstDuplicate = Integer.MIN_VALUE;
         int lastDuplicate = Integer.MIN_VALUE;
-
         for (int i = 0; i < N; i++) {
             if (firstOccurrence.containsKey(A[i])) {
-                // If a duplicate is found, update lastDuplicate
                 lastDuplicate = A[i];
                 if (firstDuplicate == Integer.MIN_VALUE) {
                     firstDuplicate = A[i];
@@ -30,13 +21,11 @@ public class FirstLastDuplicateDifference {
                 firstOccurrence.put(A[i], i);
             }
         }
-
         if (firstDuplicate != Integer.MIN_VALUE && lastDuplicate != Integer.MIN_VALUE) {
             System.out.println("Difference between first and last duplicate element: " + (lastDuplicate - firstDuplicate));
         } else {
             System.out.println("No duplicates found in the array.");
         }
-
         scanner.close();
     }
 }
